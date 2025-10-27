@@ -1,0 +1,23 @@
+{
+  "packageId": "com.asen.picnic",
+  "host": "picnic-3.onrender.com",
+  "name": "Picnic Vakti",
+  "launcherName": "Picnic",
+  "display": "standalone",
+  "themeColor": "#FF6600",
+  "backgroundColor": "#FFFFFF",
+  "iconUrl": "https://picnic-3.onrender.com/static/icons/picnic-icon-512.png",
+  "maskableIconUrl": "https://picnic-3.onrender.com/static/icons/picnic-icon-512.png",
+  "navigationColor": "#FF6600",
+  "navigationColorDark": "#FF6600",
+  "navigationDividerColor": "#FF6600",
+  "navigationDividerColorDark": "#FF6600",
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "enableNotifications": false,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "minSdkVersion": 19
+}

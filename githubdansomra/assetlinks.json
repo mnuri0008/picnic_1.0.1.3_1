@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.asen.picnic",
+        "sha256_cert_fingerprints": ["DF:66:46:A7:C2:0E:D2:8F:16:70:7E:CB:76:73:49:83:4C:33:5D:20:3C:8B:04:3E:88:4B:C9:F3:E4:AE:EE:A9"]
+      }
+    }]
