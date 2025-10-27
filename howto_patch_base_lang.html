@@ -1,0 +1,20 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>How to patch base.html</title></head>
+<body style="font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; line-height:1.4; padding:24px">
+<h1>Language Link Fix — Paste Into <code>templates/base.html</code></h1>
+<p>Find the old lines that look like:</p>
+<pre>&lt;a class="lang" href="{ "{ url_for(request.endpoint, **dict(request.view_args or {}, **request.args.to_dict(flat=True)), lang='tr') }" }"&gt;TR&lt;/a&gt;
+&lt;a class="lang" href="{ "{ url_for(request.endpoint, **dict(request.view_args or {}, **request.args.to_dict(flat=True)), lang='en') }" }"&gt;EN&lt;/a&gt;</pre>
+<p>Delete those and paste this block <strong>in the same place</strong>:</p>
+<pre>{% set view_params = request.view_args or {} %}
+{% set q = request.args.to_dict(flat=True) %}
+{% set _ = q.pop('lang', None) %}
+{% set LANG_TR_URL = url_for(request.endpoint, **view_params, **q, lang='tr') %}
+{% set LANG_EN_URL = url_for(request.endpoint, **view_params, **q, lang='en') %}
+
+{# Replace your existing language anchors with these two lines: #}
+<a class="lang" href="{{ LANG_TR_URL }}">TR</a>
+<a class="lang" href="{{ LANG_EN_URL }}">EN</a>
+</pre>
+<p>This removes the unsupported Jinja <code>**kwargs</code> unpack syntax and preserves your route + query parameters while toggling <code>lang</code>.</p>
+</body></html>
