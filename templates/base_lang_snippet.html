@@ -1,9 +1,6 @@
-{% set view_params = request.view_args or {} %}
-{% set q = request.args.to_dict(flat=True) %}
-{% set _ = q.pop('lang', None) %}
-{% set LANG_TR_URL = url_for(request.endpoint, **view_params, **q, lang='tr') %}
-{% set LANG_EN_URL = url_for(request.endpoint, **view_params, **q, lang='en') %}
 
-{# Replace your existing language anchors with these two lines: #}
-<a class="lang" href="{{ LANG_TR_URL }}">TR</a>
-<a class="lang" href="{{ LANG_EN_URL }}">EN</a>
+<!-- templates/base_lang_snippet.html -->
+<div class="lang-switch">
+  <a class="lang" href="{{ LANG_TR_URL }}">TR</a>
+  <a class="lang" href="{{ LANG_EN_URL }}">EN</a>
+</div>

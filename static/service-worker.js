@@ -1,1 +1,1 @@
-self.addEventListener('install', ()=>{});
+// noop service worker to prevent 404\n
