@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ request.args.get('lang', 'tr') }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Piknik Vakti{% endblock %}</title>
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+  {% block head %}{% endblock %}
+  <style>
+    .lang { margin-left: 8px; font-weight: 600; text-decoration: none; }
+    .banner { background: #fff7d6; color:#8a6d3b; border:1px solid #f0e0aa; padding:10px 14px; border-radius:8px; margin:12px auto; max-width: 1100px;}
+  </style>
+</head>
+<body>
+  <header style="display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 16px;">
+    <div style="font-weight:800;">🥗 Piknik Vakti</div>
+    <nav>
+      <a class="lang" href="{{ lang_url('tr') }}">TR</a>
+      <a class="lang" href="{{ lang_url('en') }}">EN</a>
+    </nav>
+  </header>
+
+  {% if not g.get('smtp_ready', False) %}
+  <div class="banner">SMTP ayarlanmadı; kod loglara yazıldı.</div>
+  {% endif %}
+
+  <main style="max-width:1100px;margin:0 auto;padding:0 16px 40px;">
+    {% block content %}{% endblock %}
+  </main>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js').catch(()=>{});
+    }
+  </script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
